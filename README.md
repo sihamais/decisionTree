@@ -1,15 +1,10 @@
 <center>
-<h1><b>Rapport de projet – détection d’outliers par arbres de
-décisions</b></h1>
+<h1><b>Détection d’outliers par arbres de décisions</b></h1>
 </center>
 
-## II - Données
-1. *Combien y a-t-il de données dans chacune des classes ?*
-
+## Données
 Le set de données comporte 250 ***inliers*** et 80 ***outliers***, soit 330 exemples.
 
-1. *Écrivez une fonction pour visualiser ces données (en utilisant seaborn
-ou autre). Joignez une capture d’écran du résultat dans votre rapport.*
 <div style="display: grid;grid-template-columns: 1fr 2fr; grid-gap: 40px;margin:auto;">
 <div style="margin-top:auto; margin-bottom:auto;margin-right:30px;">
 <ul>
@@ -17,39 +12,27 @@ ou autre). Joignez une capture d’écran du résultat dans votre rapport.*
 <li>Weighted Accuracy :<br>0.5704305674365554</li>
 </ul>
 </div>
-<img src="data.png">
+<img src="Data.png">
 </div>
-
-1. *Décrivez brièvement la forme des données.*
 
 On peut constater que les données catégorisées comme ***inliers*** (*GroundTruth* = 0) sont regroupés au centre du graphe. Tandis que les ***outliers*** (*GroundTruth* = 1) sont dispérsées autour des Inliers.
 
 
-## III - Évaluation
-1. *À la seule lecture des coefficients, le modèle associé vous semble-t-il bon ?
-Justifiez.*
+## Évaluation
 
 Ce modèle arrive à prédire correctement un grand nombre d'***inliers***. Cependant il n'arrive à prédire correctement que 5 ***outliers*** avec 30 mauvaises prédictions. Donc ce modèle n'est pas bon.
-
-2. *Calculez puis comparez l’exactitude et l’exactitude pondérée de cette
-matrice. Commentez*
 
 On obtient le pourcentage de l'exactitude ( les bonnes préditions ) d'environ 96.92%.
 L'exactitude est très haute car le modèle prédit correctement presque tout les ***inliers*** qui consituent la quasi totalité des exemples. 
 Par contre, on a obtenu le pourcentage d'environ 57% pour l'exactitude pondérée ( bonne prédictions pour chaque classe ), qui considère l'erreur sur les ***outliers*** avec un poids égal à celui des erreurs sur les ***inliers***, elle donne donc une mesure plus intéressante dans notre cas.
 
-3. *Pourquoi l’exactitude donne un score aussi bon ?*
-
 L'exactitude donne un score aussi bon car elle se base sur la majorité des données qui sont des ***inliers***, elle ne considère donc que très peu les ***outliers*** dans son calcul. Le modèle ne se trompe donc que très peu car presque tout les exemples sont des ***inliers***.
-
-4. *En déduire pourquoi elle n’est pas pertinente dans notre cas*
 
 Elle n'est pas pertinente dans notre cas car le dataset n'est pas balancé. Le nombre de données labelisés ***inliers*** est largement supérieur au nombre de données labelisé ***outliers***. 
 
-## IV - Algorithmes
+## Algorithmes
 
-### 4.1  Arbre réduit à 1 feuille (classe DecisionLeaf)
-3. *Évaluez le modèle appris.*
+### Arbre réduit à 1 feuille (classe DecisionLeaf)
 <div style="display: grid;grid-template-columns: 1fr 2fr; grid-gap: 40px;margin:auto;">
 <div style="margin-top:auto; margin-bottom:auto;margin-right:30px;">
 <ul>
@@ -61,8 +44,7 @@ Elle n'est pas pertinente dans notre cas car le dataset n'est pas balancé. Le n
 <img src="4.1_data.png">
 </div>
 
-### 4.2  Arbre superficiel
-3. *Évaluez votre modèle et discutez les résultats.*
+### Arbre superficiel
 <div style="display: grid; grid-gap:40px;margin:auto;grid-template-columns: 1fr 2fr;">
 <div style="margin-top:auto; margin-bottom:auto;margin-right:30px">
 <ul>
@@ -76,8 +58,7 @@ Elle n'est pas pertinente dans notre cas car le dataset n'est pas balancé. Le n
 </div>
 L'évaluation obtenue du modèle est meilleure avec l'algorithme <b>ID3</b> puisqu'il permet de mieux englober les données en limitant l'utilisation d'un attribut à une seule fois. Les attributs sont donc tous pris en compte d'où l'augmentation de la précision.
 
-### 4.3  Arbre généralisé
-3. *Quelle hauteur vous semble donner les meilleurs résultats ?*
+### Arbre généralisé
 <div style="display: grid; justify-content:around; grid-template-columns: 1fr 2fr;grid-gap: 30px;margin:auto;">
 <div style="margin-top:auto; margin-bottom:auto;margin-right:30px">
 <p>Avec hauteur = 1, les seuils, indices d'attribut et métriques sont identiques à celles obtenues dans la section 4.1.<br>
