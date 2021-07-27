@@ -1,7 +1,3 @@
-<div style="display:grid;grid-template-columns:1fr 1fr;margin:auto;margin-bottom:0px;text-align:center;">
-<h3>AISSAOUI Siham</h3>
-<h3>MAHRAS Asmae</h3>
-</div>
 <center>
 <h1><b>Rapport de projet – détection d’outliers par arbres de
 décisions</b></h1>
